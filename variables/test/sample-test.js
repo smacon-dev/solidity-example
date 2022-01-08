@@ -11,7 +11,7 @@ describe("Variables", function () {
   })
 
   it("Should be 0", async function () {
-    expect(await contract.get()).to.equal(0);
+    expect(await contract.getTimeStamp()).to.equal(0);
   });
 
 });
