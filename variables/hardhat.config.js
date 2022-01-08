@@ -10,12 +10,20 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
   }
 });
 
-// You need to export an object to set up your config
-// Go to https://hardhat.org/config/ to learn more
+const MAINNET_RPC_URL = process.env.MAINNET_RPC_URL;
 
 /**
  * @type import('hardhat/config').HardhatUserConfig
  */
 module.exports = {
-  solidity: "0.8.4",
+  solidity: "0.8.9",
+  networks: {
+    hardhat: {
+      forking: {
+        url: `${MAINNET_RPC_URL}`,
+        blockNumber: 3109500
+      }
+    }
+  }
 };
+
