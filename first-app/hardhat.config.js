@@ -10,12 +10,18 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
   }
 });
 
-// You need to export an object to set up your config
-// Go to https://hardhat.org/config/ to learn more
+const YOUR_PRIVATE_KEY = process.env.YOUR_PRIVATE_KEY;
+const RINKEBY_RPC_URL = process.env.RINKEBY_RPC_URL;
 
 /**
  * @type import('hardhat/config').HardhatUserConfig
  */
 module.exports = {
-  solidity: "0.8.4",
+  solidity: "0.8.9",
+  networks: {
+    rinkeby: {
+      url: `${RINKEBY_RPC_URL}`,
+      accounts: [`${YOUR_PRIVATE_KEY}`]
+    }
+  }
 };
