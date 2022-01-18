@@ -3,11 +3,18 @@ const hre = require("hardhat");
 
 async function main() {
 
-  const Factory = await hre.ethers.getContractFactory("MerkleProof");
-  const contract = await Factory.deploy();
-  await contract.deployed();
-
-  console.log("Contract deployed to:", contract.address);
+  const MerkleProofFactory = await hre.ethers.getContractFactory("MerkleProof");
+  const merkleProof = await MerkleProofFactory.deploy();
+  await merkleProof.deployed();
+  console.log("MerkleProof Address: ", merkleProof.address);
+  
+  const TestMerkleProofFactory = await hre.ethers.getContractFactory("TestMerkleProof");
+  const testMerkleProof = await TestMerkleProofFactory.deploy();
+  await testMerkleProof.deployed();
+  console.log("TestMerkleProof Address: ", testMerkleProof.address);
+  
+  const root = await testMerkleProof.getRoot();
+  console.log("root:" + root);
 }
 
 main()
